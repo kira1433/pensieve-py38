@@ -9,9 +9,11 @@ COPY . /app
 
 # Install any needed packages specified in requirements.txt
 # RUN pip install --trusted-host pypi.python.org -r requirements.txt
-RUN pip install numpy
+RUN pip install numpy tensorflow==2.7 tflearn matplotlib selenium
 # Run setup.py in the root directory
+
 RUN python setup.py install
+
 
 # Create a shell script to run all the Python scripts
 RUN echo '#!/bin/sh\n\
