@@ -208,7 +208,7 @@ def make_request_handler(input_dict):
     return Request_Handler
 
 
-def run(server_class=HTTPServer, port=8333, log_file_path=LOG_FILE):
+def run(server_class=HTTPServer, port=os.environ['PORT'], log_file_path=LOG_FILE):
 
     np.random.seed(RANDOM_SEED)
 
@@ -261,19 +261,15 @@ def run(server_class=HTTPServer, port=8333, log_file_path=LOG_FILE):
 
         # interface to abr_rl server
         handler_class = make_request_handler(input_dict=input_dict)
-
-        server_address = ('localhost', port)
+        server_host = 'https://pensieve-py38-production.up.railway.app'
+        server_address = (server_host, port)
         httpd = server_class(server_address, handler_class)
         print('Listening on port ' + str(port))
         httpd.serve_forever()
 
 
 def main():
-    if len(sys.argv) == 2:
-        trace_file = sys.argv[1]
-        run(log_file_path=LOG_FILE + '_RL_' + trace_file)
-    else:
-        run()
+    run()
 
 
 if __name__ == "__main__":

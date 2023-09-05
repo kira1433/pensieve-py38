@@ -9,7 +9,7 @@ COPY . /app
 
 # Install any needed packages specified in requirements.txt
 # RUN pip install --trusted-host pypi.python.org -r requirements.txt
-RUN pip install numpy scipy tensorflow==2.7 tflearn matplotlib selenium
+RUN pip install numpy scipy tensorflow==2.7 tflearn matplotlib selenium Flask
 # Run setup.py in the root directory
 
 RUN python setup.py install
@@ -26,8 +26,8 @@ RUN echo '#!/bin/sh\n\
 cd /app/test\n\
 python get_video_sizes.py\n\
 python rl_no_training.py\n\
-cd /app/real_exp\n\
-python run_exp.py\n' > run_scripts.sh && chmod +x run_scripts.sh
+cd /app/rl_server\n\
+python rl_server_no_training.py\n' > run_scripts.sh && chmod +x run_scripts.sh
 
 # Run the shell script as the entry point
 CMD ["./run_scripts.sh"]
