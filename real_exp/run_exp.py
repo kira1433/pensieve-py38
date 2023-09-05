@@ -16,8 +16,9 @@ def main():
 	np.random.seed(RANDOM_SEED)
 
 	with open('./chrome_retry_log', 'w') as log:
-		log.write('chrome retry log\n')
-		log.flush()
+		# log.write('chrome retry log\n')
+		# print('chrome retry log')
+		# log.flush()
 
 		for rt in range(REPEAT_TIME):
 			np.random.shuffle(ABR_ALGO)
@@ -38,9 +39,9 @@ def main():
 					if out == 'done\n':
 						break
 					else:
-						log.write(abr_algo + '_' + str(rt) + '\n')
-						log.write(out + '\n')
-						log.flush()
+						# log.write(abr_algo + '_' + str(rt) + '\n')
+						# log.write(out + '\n')
+						# log.flush()
 
 
 
