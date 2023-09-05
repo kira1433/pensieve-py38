@@ -17,7 +17,6 @@ def main():
 
 	with open('./chrome_retry_log', 'w') as log:
 		# log.write('chrome retry log\n')
-		# print('chrome retry log')
 		# log.flush()
 
 		for rt in range(REPEAT_TIME):
@@ -38,7 +37,6 @@ def main():
 
 					if out == 'done\n':
 						break
-					else:
 						# log.write(abr_algo + '_' + str(rt) + '\n')
 						# log.write(out + '\n')
 						# log.flush()
