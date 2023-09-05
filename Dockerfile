@@ -14,9 +14,8 @@ RUN pip install numpy tensorflow==2.7 tflearn matplotlib selenium
 
 RUN python setup.py install
 
-RUN pip uninstall -y protobuf
-
 # Install protobuf version 3.20.0
+RUN pip uninstall -y protobuf
 RUN pip install protobuf==3.20.0
 
 RUN pip uninstall -y Pillow
