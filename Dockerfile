@@ -21,16 +21,13 @@ RUN pip install protobuf==3.20.0
 RUN pip uninstall -y Pillow
 RUN pip install Pillow==9.5.0
 
-
-
 # Create a shell script to run all the Python scripts
 RUN echo '#!/bin/sh\n\
-python test/get_video_sizes.py\n\
-python test/rl_no_training.py\n\
-python real_exp/run_exp.py\n' > run_scripts.sh && chmod +x run_scripts.sh
-
-
-
+cd /app/test\n\
+python get_video_sizes.py\n\
+python rl_no_training.py\n\
+cd /app/real_exp\n\
+python run_exp.py\n' > run_scripts.sh && chmod +x run_scripts.sh
 
 # Run the shell script as the entry point
 CMD ["./run_scripts.sh"]
