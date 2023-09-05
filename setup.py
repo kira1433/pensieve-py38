@@ -10,6 +10,8 @@ os.system(" apt-get -y install mahimahi")
 
 # apache server
 os.system(" apt-get -y install apache2")
+os.system(" apt-get -y install python-setuptools")
+os.system(" apt-get -y install xvfb")
 
 # selenium
 os.system("wget 'https://pypi.python.org/packages/source/s/selenium/selenium-2.39.0.tar.gz'")

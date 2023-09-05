@@ -78,7 +78,8 @@ def main():
 
         video_count = 0
 
-        while True:  # serve video forever
+        while True: 
+            # serve video forever
             # the action is from the last decision
             # this is to make the framework similar to the real
             delay, sleep_time, buffer_size, rebuf, \
