@@ -41,8 +41,8 @@ def main():
     net_env = env.Environment(all_cooked_time=all_cooked_time,
                               all_cooked_bw=all_cooked_bw)
 
-    log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
-    log_file = open(log_path, 'wb')
+    # log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
+    # log_file = open(log_path, 'wb')
 
     with tf.compat.v1.Session() as sess:
 
@@ -101,14 +101,14 @@ def main():
             last_bit_rate = bit_rate
 
             # log time_stamp, bit_rate, buffer_size, reward
-            log_file.write(str(time_stamp / M_IN_K) + '\t' +
-                           str(VIDEO_BIT_RATE[bit_rate]) + '\t' +
-                           str(buffer_size) + '\t' +
-                           str(rebuf) + '\t' +
-                           str(video_chunk_size) + '\t' +
-                           str(delay) + '\t' +
-                           str(reward) + '\n')
-            log_file.flush()
+            # log_file.write(str(time_stamp / M_IN_K) + '\t' +
+            #                str(VIDEO_BIT_RATE[bit_rate]) + '\t' +
+            #                str(buffer_size) + '\t' +
+            #                str(rebuf) + '\t' +
+            #                str(video_chunk_size) + '\t' +
+            #                str(delay) + '\t' +
+            #                str(reward) + '\n')
+            # log_file.flush()
 
             # retrieve previous state
             if len(s_batch) == 0:
@@ -138,8 +138,8 @@ def main():
             entropy_record.append(a3c.compute_entropy(action_prob[0]))
 
             if end_of_video:
-                log_file.write('\n')
-                log_file.close()
+                # log_file.write('\n')
+                # log_file.close()
 
                 last_bit_rate = DEFAULT_QUALITY
                 bit_rate = DEFAULT_QUALITY  # use the default action here
@@ -161,8 +161,8 @@ def main():
                 if video_count >= len(all_file_names):
                     break
 
-                log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
-                log_file = open(log_path, 'w')
+                # log_path = LOG_FILE + '_' + all_file_names[net_env.trace_idx]
+                # log_file = open(log_path, 'w')
 
 
 if __name__ == '__main__':
