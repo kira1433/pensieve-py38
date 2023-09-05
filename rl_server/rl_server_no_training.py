@@ -208,7 +208,7 @@ def make_request_handler(input_dict):
     return Request_Handler
 
 
-def run(server_class=HTTPServer, port=os.environ['PORT'], log_file_path=LOG_FILE):
+def run(server_class=HTTPServer, port=int(os.environ['PORT']), log_file_path=LOG_FILE):
 
     np.random.seed(RANDOM_SEED)
 
