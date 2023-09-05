@@ -19,6 +19,11 @@ RUN pip uninstall -y protobuf
 # Install protobuf version 3.20.0
 RUN pip install protobuf==3.20.0
 
+RUN pip uninstall -y Pillow
+RUN pip install Pillow==9.5.0
+
+
+
 # Create a shell script to run all the Python scripts
 RUN echo '#!/bin/sh\n\
 python test/get_video_sizes.py\n\
