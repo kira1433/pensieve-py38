@@ -195,11 +195,12 @@ def make_request_handler(input_dict):
         def do_GET(self):
             print(sys.stderr, 'GOT REQ')
             self.send_response(200)
-            #self.send_header('Cache-Control', 'Cache-Control: no-cache, no-store, must-revalidate max-age=0')
             self.send_header('Cache-Control', 'max-age=3000')
-            self.send_header('Content-Length', 20)
+            response_text = "This is a text response."
+            response_bytes = response_text.encode('utf-8')
+            self.send_header('Content-Length', len(response_bytes))
             self.end_headers()
-            # self.wfile.write("console.log('here');")
+            self.wfile.write(response_bytes)
 
         def log_message(self, format, *args):
             return
