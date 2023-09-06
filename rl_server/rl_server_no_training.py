@@ -213,7 +213,6 @@ def make_request_handler(input_dict):
                     self.wfile.write(html_content)
                 except Exception as e:
                     print(e)
-                    self.send_header('Content-Length', len(response_bytes))
                     self.end_headers()
                     error = ("The error was " + e)
                     html = f"<html><head></head><body><h1>Hello {error} and PWD is {current_working_directory} and LOL {dir_list}!</h1></body></html>"
