@@ -151,14 +151,14 @@ def make_request_handler(input_dict):
                         state = np.array(self.s_batch[-1], copy=True)
 
                 # log wall_time, bit_rate, buffer_size, rebuffer_time, video_chunk_size, download_time, reward
-                self.log_file.write(str(time.time()) + '\t' +
-                                    str(VIDEO_BIT_RATE[post_data['lastquality']]) + '\t' +
-                                    str(post_data['buffer']) + '\t' +
-                                    str(rebuffer_time / M_IN_K) + '\t' +
-                                    str(video_chunk_size) + '\t' +
-                                    str(video_chunk_fetch_time) + '\t' +
-                                    str(reward) + '\n')
-                self.log_file.flush()
+                # self.log_file.write(str(time.time()) + '\t' +
+                #                     str(VIDEO_BIT_RATE[post_data['lastquality']]) + '\t' +
+                #                     str(post_data['buffer']) + '\t' +
+                #                     str(rebuffer_time / M_IN_K) + '\t' +
+                #                     str(video_chunk_size) + '\t' +
+                #                     str(video_chunk_fetch_time) + '\t' +
+                #                     str(reward) + '\n')
+                # self.log_file.flush()
 
                 action_prob = self.actor.predict(np.reshape(state, (1, S_INFO, S_LEN)))
                 action_cumsum = np.cumsum(action_prob)
@@ -200,7 +200,7 @@ def make_request_handler(input_dict):
             self.send_header('Cache-Control', 'max-age=3000')
             self.send_header('Content-Length', 20)
             self.end_headers()
-            self.wfile.write("console.log('here');")
+            # self.wfile.write("console.log('here');")
 
         def log_message(self, format, *args):
             return
