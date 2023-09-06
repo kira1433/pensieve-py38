@@ -26,8 +26,8 @@ RUN echo '#!/bin/sh\n\
 cd /app/test\n\
 python get_video_sizes.py\n\
 python rl_no_training.py\n\
-cd /app\n\
-python rl_server/rl_server_no_training.py\n' > run_scripts.sh && chmod +x run_scripts.sh
+cd /app/rl_server\n\
+python rl_server_no_training.py\n' > run_scripts.sh && chmod +x run_scripts.sh
 
 # Run the shell script as the entry point
 CMD ["./run_scripts.sh"]
