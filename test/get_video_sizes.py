@@ -3,7 +3,7 @@ import os
 
 TOTAL_VIDEO_CHUNCK = 49
 BITRATE_LEVELS = 6
-VIDEO_PATH = '../video_server/'
+VIDEO_PATH = '../rl_server/video_server/'
 VIDEO_FOLDER = 'video'
 
 # assume videos are in ../video_servers/video[1, 2, 3, 4, 5]
