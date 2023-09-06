@@ -261,7 +261,7 @@ def run(server_class=HTTPServer, port=int(os.environ.get('PORT', 8000)), log_fil
 
         # interface to abr_rl server
         handler_class = make_request_handler(input_dict=input_dict)
-        server_host = 'pensieve-py38-production.up.railway.app'
+        server_host = '0.0.0.0'
         server_address = (server_host, port)
         print('server address is ' , server_address)
         httpd = server_class(server_address, handler_class)
