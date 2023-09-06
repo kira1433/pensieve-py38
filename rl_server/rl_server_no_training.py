@@ -216,7 +216,6 @@ def make_request_handler(input_dict):
                 self.send_header('Content-Length', len(response_bytes))
                 self.end_headers()
                 self.wfile.write(response_bytes)
-                super().do_GET()
 
         def log_message(self, format, *args):
             return
