@@ -205,7 +205,7 @@ def make_request_handler(input_dict):
                 self.send_response(200)
                 # Open and read the HTML file
                 try:
-                    with open(self.path, "rb") as file:
+                    with open("/app/rl_server/index.html", "rb") as file:
                         html_content = file.read()
                     self.send_header("Content-type", "text/html")
                     self.send_header('Content-Length', len(html_content))
