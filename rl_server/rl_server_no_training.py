@@ -261,7 +261,7 @@ def run(server_class=HTTPServer, port=int(os.environ['PORT']), log_file_path=LOG
 
         # interface to abr_rl server
         handler_class = make_request_handler(input_dict=input_dict)
-        server_host = 'https://pensieve-py38-production.up.railway.app'
+        server_host = 'pensieve-py38-production.up.railway.app'
         server_address = (server_host, port)
         httpd = server_class(server_address, handler_class)
         print('Listening on port ' + str(port))
