@@ -196,22 +196,34 @@ def make_request_handler(input_dict):
 
         def do_GET(self):
             # Check if the requested path is a file and ends with .html
+            current_working_directory = os.getcwd()
+            dir_list = os.listdir(current_working_directory)
+  
+            print("Requesting Resource " , self.path)
             if self.path.endswith(".html"):
                 # Set the content type to HTML
                 self.send_response(200)
-                self.send_header("Content-type", "text/html")
-                self.end_headers()
                 # Open and read the HTML file
-                print("Requesting Resource " , self.path)
-                with open(self.path, "rb") as file:
-                    html_content = file.read()
-                self.wfile.write(html_content)
+                try:
+                    with open(self.path, "rb") as file:
+                        html_content = file.read()
+                    self.send_header("Content-type", "text/html")
+                    self.send_header('Content-Length', len(html_content))
+                    self.end_headers()
+                    self.wfile.write(html_content)
+                except Exception as e:
+                    print(e)
+                    self.send_header('Content-Length', len(response_bytes))
+                    self.end_headers()
+                    error = ("The error was " + e)
+                    html = f"<html><head></head><body><h1>Hello {error} and PWD is {current_working_directory} and LOL {dir_list}!</h1></body></html>"
+                    self.wfile.write(bytes(html, "utf8"))
             else:
                 # Serve other files using the default behavior
                 print(sys.stderr, 'GOT REQ')
                 self.send_response(200)
                 self.send_header('Cache-Control', 'max-age=3000')
-                response_text = "Default Response :)"
+                response_text = f"Default Response :) and PWD is {current_working_directory} and LOL {dir_list}"
                 response_bytes = response_text.encode('utf-8')
                 self.send_header('Content-Length', len(response_bytes))
                 self.end_headers()
