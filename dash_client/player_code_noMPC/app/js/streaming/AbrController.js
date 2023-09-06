@@ -353,7 +353,7 @@ MediaPlayer.dependencies.AbrController = function () {
 								switch (abrAlgo) {
                                 case 6: // RL
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "http://localhost:8333", false);
+                                    xhr.open("POST", "https://pensieve-py38-production.up.railway.app", false);
                                     xhr.onreadystatechange = function() {
                                         if ( xhr.readyState == 4 && xhr.status == 200 ) {
                                             console.log("GOT RESPONSE:" + xhr.responseText + "---");
@@ -381,7 +381,7 @@ MediaPlayer.dependencies.AbrController = function () {
 								case 1:
 								    quality = self.getBitrateBB(bufferLevelAdjusted);
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "http://localhost:8333", false);
+                                    xhr.open("POST", "https://pensieve-py38-production.up.railway.app", false);
                                     xhr.onreadystatechange = function() {
                                         if ( xhr.readyState == 4 && xhr.status == 200 ) {
                                             console.log("GOT RESPONSE:" + xhr.responseText + "---");
@@ -396,7 +396,7 @@ MediaPlayer.dependencies.AbrController = function () {
 								case 2:
                                     quality = self.getBitrateRB(bandwidthEst);
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "http://localhost:8333", false);
+                                    xhr.open("POST", "https://pensieve-py38-production.up.railway.app", false);
                                     xhr.onreadystatechange = function() {
                                         if ( xhr.readyState == 4 && xhr.status == 200 ) {
                                             console.log("GOT RESPONSE:" + xhr.responseText + "---");
@@ -414,7 +414,7 @@ MediaPlayer.dependencies.AbrController = function () {
 								case 4: 
 								    quality = self.festive.getBitrate(lastQuality, bufferLevelAdjusted, bandwidthEst, lastRequested, bitrateArray);
                                     var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "http://localhost:8333", false);
+                                    xhr.open("POST", "https://pensieve-py38-production.up.railway.app", false);
                                     xhr.onreadystatechange = function() {
                                         if ( xhr.readyState == 4 && xhr.status == 200 ) {
                                             console.log("GOT RESPONSE:" + xhr.responseText + "---");

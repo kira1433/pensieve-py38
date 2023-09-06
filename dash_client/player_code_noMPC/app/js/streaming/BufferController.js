@@ -484,7 +484,7 @@ MediaPlayer.dependencies.BufferController = function () {
 							// Send result to server NOTE: url is hard coded
 							$(document).ready(function(){
 							    $.ajax({
-								url: 'http://localhost:8333',
+								url: 'https://pensieve-py38-production.up.railway.app',
 								// data: bufferedSegmentQuality.join(','),
 								data: JSON.stringify(json_allResult),
 								type: 'POST',
