@@ -176,14 +176,15 @@ def make_request_handler(input_dict):
                     self.input_dict['last_total_rebuf'] = 0
                     self.input_dict['last_bit_rate'] = DEFAULT_QUALITY
                     self.input_dict['video_chunk_coount'] = 0
-                    self.log_file.write('\n')  # so that in the log we know where video ends
+                    # self.log_file.write('\n')  # so that in the log we know where video ends
 
                 self.send_response(200)
                 self.send_header('Content-Type', 'text/plain')
-                self.send_header('Content-Length', len(send_data))
                 self.send_header('Access-Control-Allow-Origin', "*")
+                response_bytes = send_data.encode('utf-8')
+                self.send_header('Content-Length', len(response_bytes))
                 self.end_headers()
-                self.wfile.write(send_data)
+                self.wfile.write(response_bytes)
                 # record [state, action, reward]
                 # put it here after training, notice there is a shift in reward storage
 
