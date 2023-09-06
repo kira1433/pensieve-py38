@@ -193,15 +193,29 @@ def make_request_handler(input_dict):
                 else:
                     self.s_batch.append(state)
 
+
         def do_GET(self):
-            print(sys.stderr, 'GOT REQ')
-            self.send_response(200)
-            self.send_header('Cache-Control', 'max-age=3000')
-            response_text = "This is a text response."
-            response_bytes = response_text.encode('utf-8')
-            self.send_header('Content-Length', len(response_bytes))
-            self.end_headers()
-            self.wfile.write(response_bytes)
+            # Check if the requested path is a file and ends with .html
+            if self.path.endswith(".html"):
+                # Set the content type to HTML
+                self.send_response(200)
+                self.send_header("Content-type", "text/html")
+                self.end_headers()
+                # Open and read the HTML file
+                with open(self.path[1:], "rb") as file:
+                    html_content = file.read()
+                self.wfile.write(html_content)
+            else:
+                # Serve other files using the default behavior
+                print(sys.stderr, 'GOT REQ')
+                self.send_response(200)
+                self.send_header('Cache-Control', 'max-age=3000')
+                response_text = "Default Response :)"
+                response_bytes = response_text.encode('utf-8')
+                self.send_header('Content-Length', len(response_bytes))
+                self.end_headers()
+                self.wfile.write(response_bytes)
+                super().do_GET()
 
         def log_message(self, format, *args):
             return
