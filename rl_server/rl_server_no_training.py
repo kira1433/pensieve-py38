@@ -184,7 +184,6 @@ def make_request_handler(input_dict):
                 self.send_header('Access-Control-Allow-Origin', "*")
                 self.end_headers()
                 self.wfile.write(send_data)
-
                 # record [state, action, reward]
                 # put it here after training, notice there is a shift in reward storage
 
