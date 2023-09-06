@@ -202,7 +202,8 @@ def make_request_handler(input_dict):
                 self.send_header("Content-type", "text/html")
                 self.end_headers()
                 # Open and read the HTML file
-                with open(self.path[1:], "rb") as file:
+                print("Requesting Resource " , self.path)
+                with open(self.path, "rb") as file:
                     html_content = file.read()
                 self.wfile.write(html_content)
             else:
