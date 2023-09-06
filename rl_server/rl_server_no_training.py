@@ -208,7 +208,7 @@ def make_request_handler(input_dict):
     return Request_Handler
 
 
-def run(server_class=HTTPServer, port=int(os.environ['PORT']), log_file_path=LOG_FILE):
+def run(server_class=HTTPServer, port=int(os.environ.get('PORT', 8000)), log_file_path=LOG_FILE):
 
     np.random.seed(RANDOM_SEED)
 
@@ -263,6 +263,7 @@ def run(server_class=HTTPServer, port=int(os.environ['PORT']), log_file_path=LOG
         handler_class = make_request_handler(input_dict=input_dict)
         server_host = 'pensieve-py38-production.up.railway.app'
         server_address = (server_host, port)
+        print('server address is ' , server_address)
         httpd = server_class(server_address, handler_class)
         print('Listening on port ' + str(port))
         httpd.serve_forever()
