@@ -208,6 +208,14 @@ def make_request_handler(input_dict):
                     with open("/app/rl_server" + self.path, "rb") as file:
                         html_content = file.read()
                     self.send_header('Content-Length', len(html_content))
+                    if self.path.endswith(".html"):
+                        self.send_header("Content-type", "text/html")
+                    if self.path.endswith("js"):
+                        self.send_header("Content-type", "application/javascript")
+                    if self.path.endswith("mpd"):
+                        self.send_header("Content-type", "application/dash+xml")
+                    if self.path.endswith("m4s"):
+                        self.send_header("Content-type", "video/iso.segment")
                     self.end_headers()
                     self.wfile.write(html_content)
                 except Exception as e:
