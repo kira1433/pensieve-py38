@@ -200,12 +200,12 @@ def make_request_handler(input_dict):
             dir_list = os.listdir(current_working_directory)
   
             print("Requesting Resource " , self.path)
-            if self.path.endswith(".html"):
+            if self.path.endswith(".html") or self.path.endswith("js") or self.path.endswith("mpd") or self.path.endswith("m4s"):
                 # Set the content type to HTML
                 self.send_response(200)
                 # Open and read the HTML file
                 try:
-                    with open("/app/rl_server/index.html", "rb") as file:
+                    with open("/app/rl_server" + self.path, "rb") as file:
                         html_content = file.read()
                     self.send_header("Content-type", "text/html")
                     self.send_header('Content-Length', len(html_content))
