@@ -207,14 +207,13 @@ def make_request_handler(input_dict):
                 try:
                     with open("/app/rl_server" + self.path, "rb") as file:
                         html_content = file.read()
-                    self.send_header("Content-type", "text/html")
                     self.send_header('Content-Length', len(html_content))
                     self.end_headers()
                     self.wfile.write(html_content)
                 except Exception as e:
                     print(e)
                     self.end_headers()
-                    error = ("The error was " + e)
+                    error = ("The error was " + str(e))
                     html = f"<html><head></head><body><h1>Hello {error} and PWD is {current_working_directory} and LOL {dir_list}!</h1></body></html>"
                     self.wfile.write(bytes(html, "utf8"))
             else:
