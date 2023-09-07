@@ -30,11 +30,11 @@ import os
 # os.system(" apt-get -f -y install")
 
 # tensorflow
-os.system(" apt-get -y install python-pip python-dev")
-os.system(" pip install tensorflow")
+# os.system(" apt-get -y install python-pip python-dev")
+# os.system(" pip install tensorflow")
 
 # tflearn
-os.system(" pip install tflearn")
+# os.system(" pip install tflearn")
 os.system(" apt-get -y install python-h5py")
 os.system(" apt-get -y install python-scipy")
 
