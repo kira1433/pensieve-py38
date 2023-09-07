@@ -9,7 +9,7 @@ COPY . /app
 
 # Install any needed packages specified in requirements.txt
 # RUN pip install --trusted-host pypi.python.org -r requirements.txt
-RUN pip install numpy scipy tensorflow==2.7 tflearn matplotlib selenium Flask
+RUN pip install numpy scipy tensorflow==2.7 tflearn matplotlib Flask
 # Run setup.py in the root directory
 
 RUN python setup.py install

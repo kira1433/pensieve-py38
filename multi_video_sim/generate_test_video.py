@@ -2,7 +2,7 @@ import os
 import numpy as np
 
 
-VIDEO_SOURCE_FOLDER = '../video_server/'
+VIDEO_SOURCE_FOLDER = '../rl_server/video_server/'
 VIDEO_FOLDER = 'video'
 VIDEO_OUTPUT_FOLDER = './test_video/'
 TOTAL_VIDEO_CHUNCK = 49

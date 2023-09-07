@@ -1,6 +1,5 @@
 import os
 
-
 TOTAL_VIDEO_CHUNCK = 49
 BITRATE_LEVELS = 6
 VIDEO_PATH = '../rl_server/video_server/'

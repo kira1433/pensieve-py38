@@ -222,14 +222,14 @@ def make_request_handler(input_dict):
                     print(e)
                     self.end_headers()
                     error = ("The error was " + str(e))
-                    html = f"<html><head></head><body><h1>Hello {error} and PWD is {current_working_directory} and LOL {dir_list}!</h1></body></html>"
+                    html = f"<html><head></head><body><h1>Hello {error} and Present Working Directory is {current_working_directory}</h1></body></html>"
                     self.wfile.write(bytes(html, "utf8"))
             else:
                 # Serve other files using the default behavior
                 print(sys.stderr, 'GOT REQ')
                 self.send_response(200)
                 self.send_header('Cache-Control', 'max-age=3000')
-                response_text = f"Default Response :) and PWD is {current_working_directory} and LOL {dir_list}"
+                response_text = f"Default Response :) and PWD is {current_working_directory}"
                 response_bytes = response_text.encode('utf-8')
                 self.send_header('Content-Length', len(response_bytes))
                 self.end_headers()
