@@ -1,11 +1,16 @@
 #!/bin/bash
 node networker.js &
 pid=$!
+
+start_time=$(date +%s.%N)
 docker compose up
+end_time=$(date +%s.%N)
+elapsed_time=$(echo "$end_time - $start_time" | bc)
+echo "Time taken for sim: $elapsed_time seconds"
+
 kill $pid
 # Get the IDs of the last 3 containers used
 container_ids=$(docker ps -a --format "{{.ID}}" | tail -n 3)
-
 # Define the folder you want to copy
 folder_to_copy="/app/rl_server/logs/"
 

@@ -17,10 +17,6 @@ const openBrowserAndNavigate = async (url) => {
 
   const networkConditions = [
     { offline: false, downloadThroughput: 2000 * 1024/8, uploadThroughput: 2000 * 1024/8, latency: 50 },
-    { offline: false, downloadThroughput: 2000 * 1024/8, uploadThroughput: 2000 * 1024/8, latency: 50 },
-    { offline: false, downloadThroughput: 2000 * 1024/8, uploadThroughput: 2000 * 1024/8, latency: 50 },
-    { offline: false, downloadThroughput: 500 * 1024/8, uploadThroughput: 500 * 1024/8, latency: 50 },
-    { offline: false, downloadThroughput: 2000 * 1024/8, uploadThroughput: 2000 * 1024/8, latency: 50 }
   ];
   const networkCycleTime = 10000
 
