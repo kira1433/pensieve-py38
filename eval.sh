@@ -1,29 +1,34 @@
 #!/bin/bash
-node networker.js &
-pid=$!
+total_runs=2
+for ((run_number = 0; run_number < total_runs; run_number++)); do
 
-start_time=$(date +%s.%N)
-docker compose up
-end_time=$(date +%s.%N)
-elapsed_time=$(echo "$end_time - $start_time" | bc)
-echo "Time taken for sim: $elapsed_time seconds"
+    node networker.js $run_number &
+    pid=$!
 
-kill $pid
-# Get the IDs of the last 3 containers used
-container_ids=$(docker ps -a --format "{{.ID}}" | tail -n 3)
-# Define the folder you want to copy
-folder_to_copy="/app/rl_server/logs/"
+    start_time=$(date +%s.%N)
+    docker compose up
+    end_time=$(date +%s.%N)
+    elapsed_time=$(awk "BEGIN {print $end_time - $start_time}")
 
-# Define the destination directory in your user's home directory
-destination_directory="."
+    # Convert elapsed time to minutes and seconds
+    minutes=$(awk "BEGIN {print int($elapsed_time / 60)}")
+    seconds=$(awk "BEGIN {print int($elapsed_time % 60)}")
+    echo "Run number: ${run_number} Elapsed time: ${minutes} minutes and ${seconds} seconds"
 
-# Create the destination directory if it doesn't exist
-mkdir -p "$destination_directory"
+    kill $pid
 
-# Loop through the container IDs and copy the folder
-for container_id in $container_ids; do
-    # Extract the folder from the container
-    docker cp "$container_id:$folder_to_copy" "$destination_directory"
+    container_ids=$(docker ps -a --format "{{.ID}}" | tail -n 3)
+    folder_to_copy="/app/rl_server/logs/"
+    destination_directory="./results/run-$run_number/"
+    mkdir -p "$destination_directory"
+
+    for container_id in $container_ids; do
+        docker cp "$container_id:$folder_to_copy" "$destination_directory" > /dev/null 2>&1
+    done
+
+    python plotter.py $destination_directory
+
+    if [ $run_number -ne $((total_runs - 1)) ]; then
+    sleep 5
+    fi
 done
-
-python plotter.py

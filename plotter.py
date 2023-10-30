@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import os
+import sys
 
 PLOT_SAMPLES = 300
 files = ["logs/a3c.txt","logs/sac.txt","logs/ppo.txt"]
@@ -17,7 +17,7 @@ fig, (ax1,ax4,ax5,ax6) = plt.subplots(4, sharex=True)
 
 
 for index in range(0,3):
-    file = files[index]
+    file = sys.argv[1] + files[index]
     color = colors[index]
 
     time_stamp = []
@@ -84,5 +84,5 @@ ax6.set_title('Average rebuffer time: ' + str(rebuffer[0]) + "," + str(rebuffer[
 
 fig.suptitle("Averages are in order A3C(Blue) , SAC(Red) , PPO(Green)")
 fig.subplots_adjust(hspace=0.5)
-plt.savefig('plot.png')
-plt.show()
+plt.savefig(sys.argv[1] + 'plot.png')
+plt.close()
