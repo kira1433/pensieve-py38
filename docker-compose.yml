@@ -1,6 +1,20 @@
 version: '3'
 services:
-  my_service:
+  ppo:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_ppo
+    ports:
+      - "8002:8002"
+  sac:
+    build:
+      context: .
+      dockerfile: Dockerfile_sac
+    ports:
+      - "8001:8001"
+  a3c:
+    build:
+      context: .
+      dockerfile: Dockerfile_a3c
+    ports:
+      - "8000:8000"

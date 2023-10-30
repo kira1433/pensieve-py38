@@ -1,0 +1,24 @@
+# Use an official Python 3.8 image as the base image
+FROM python:3.8
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+# RUN pip install --trusted-host pypi.python.org -r requirements.txt
+# RUN pip install numpy scipy tensorflow==2.7 tflearn matplotlib Flask
+RUN --mount=type=cache,target=/root/.cache \
+pip install protobuf==3.20.0 Pillow==9.5.0 scipy tensorflow==2.7 tflearn Flask h5py matplotlib
+
+# Create a shell script to run all the Python scripts
+RUN echo '#!/bin/sh\n\
+cd /app/test\n\
+python get_video_sizes.py\n\
+cd /app/rl_server\n\
+python rl_server_no_training_a3c.py\n' > run_scripts.sh && chmod +x run_scripts.sh
+
+# Run the shell script as the entry point
+CMD ["./run_scripts.sh"]    

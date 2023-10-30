@@ -35,11 +35,7 @@ import os
 
 # tflearn
 # os.system(" pip install tflearn")
-os.system(" apt-get -y install python-h5py")
-os.system(" apt-get -y install python-scipy")
-
-# matplotlib
-os.system(" apt-get -y install python-matplotlib")
+# os.system(" apt-get -y install python-h5py")
 
 # copy the webpage files to /var/www/html
 # os.chdir( start_dir )
@@ -49,10 +45,10 @@ os.system(" apt-get -y install python-matplotlib")
 # os.system(" cp video_server/Manifest.mpd /var/www/html")
 
 # make results directory
-os.system("mkdir cooked_traces")
-os.system("mkdir rl_server/results")
-os.system("mkdir run_exp/results")
-os.system("mkdir real_exp/results")
+# os.system("mkdir cooked_traces")
+# os.system("mkdir rl_server/results")
+# os.system("mkdir run_exp/results")
+# os.system("mkdir real_exp/results")
 
 # need to copy the trace and pre-trained NN model
 # print("Need to put trace files in 'pensieve/cooked_traces'.")
